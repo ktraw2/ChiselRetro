@@ -18,6 +18,7 @@ public class BlockMarblePillar extends BlockMarble{
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public int getRenderType() {
 		return BlockMarblePillarRenderer.id;
 	}
