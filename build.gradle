@@ -58,6 +58,14 @@ dependencies {
 	mappings files(mcpForged)
 }
 
+jar {
+	destinationDir file("build/tmp")
+}
+
+remapJar {
+	archiveName "${archivesBaseName}_${version}_mc1.4.7.zip"
+}
+
 processResources {
 	inputs.property "version", project.version
 
