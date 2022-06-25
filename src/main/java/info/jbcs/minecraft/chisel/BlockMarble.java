@@ -49,6 +49,7 @@ public class BlockMarble extends Block implements Carvable, IRegisterIcons, IBlo
     }
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public int getRenderType() {
 		return Chisel.RenderCTMId;
 	}

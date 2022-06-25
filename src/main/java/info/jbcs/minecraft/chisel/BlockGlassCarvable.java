@@ -30,6 +30,7 @@ public class BlockGlassCarvable extends BlockGlass implements Carvable, IRegiste
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public int getRenderType() {
 		return Chisel.RenderCTMId;
 	}	

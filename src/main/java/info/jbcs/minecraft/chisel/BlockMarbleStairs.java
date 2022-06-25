@@ -44,6 +44,7 @@ public class BlockMarbleStairs extends BlockStairs implements Carvable, IRegiste
     }
     
 	@Override
+	@SideOnly(Side.CLIENT)
 	public int getRenderType() {
 		return BlockMarbleStairsRenderer.id;
 	}

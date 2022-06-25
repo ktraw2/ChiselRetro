@@ -8,6 +8,7 @@ public class BlockEldritch extends BlockMarble {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public int getRenderType() {
 		return Chisel.RenderEldritchId;
 	}

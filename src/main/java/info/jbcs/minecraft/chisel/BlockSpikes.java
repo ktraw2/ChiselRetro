@@ -63,6 +63,7 @@ public class BlockSpikes extends Block  implements IRegisterIcons, IBlockTexture
     }
     
 	@Override
+	@SideOnly(Side.CLIENT)
 	public int getRenderType() {
 		return BlockSpikesRenderer.id;
 	}

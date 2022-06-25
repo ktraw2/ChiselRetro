@@ -47,6 +47,7 @@ public class BlockRoadLine extends Block  implements IRegisterIcons, IBlockTextu
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public int getRenderType() {
 		return BlockRoadLineRenderer.id;
 	}

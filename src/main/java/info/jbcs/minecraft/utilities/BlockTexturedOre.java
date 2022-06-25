@@ -36,6 +36,7 @@ public class BlockTexturedOre extends Block implements IRegisterIcons, IBlockTex
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public int getRenderType() {
 		return BlockTexturedOreRenderer.id;
 	}
