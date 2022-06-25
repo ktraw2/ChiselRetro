@@ -40,7 +40,7 @@ if (!file(mcpForged).exists()) {
 }
 
 archivesBaseName = "ChiselRetro"
-version = "beta0.9"
+version = "beta0.9+upsilon1"
 group = "net.fybertech"
 
 repositories {
