@@ -6,7 +6,7 @@
   "version": "${version}",
   "credits": "This mod uses a lot of textures from the Painterly pack: http://painterlypack.net/. Also one stone variation is designed to look like a block from Doku.",
   "mcversion": "1.4.7",
-  "url": "https://git.sleeping.town/unascribed/ChiselRetro",
-  "authors": [ "AUTOMATIC_MAIDEN", "FyberOptic", "unascribed" ]
+  "url": "https://github.com/ktraw2/ChiselRetro",
+  "authors": [ "AUTOMATIC_MAIDEN", "FyberOptic", "unascribed", "ktraw2" ]
 }
 ]
