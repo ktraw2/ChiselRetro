@@ -69,15 +69,12 @@ public class BlockRoadLine extends Block  implements IRegisterIcons, IBlockTextu
 		super.onNeighborBlockChange(par1World, par2, par3, par4, par5);
 	}
 	
-	
-	
-	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		blockIcon = aloneIcon = reg.registerIcon("Chisel:line-marking/white-center");
-		halfLineIcon = reg.registerIcon("Chisel:line-marking/white-side");
-		fullLineIcon = reg.registerIcon("Chisel:line-marking/white-long");
+		blockIcon = aloneIcon = reg.registerIcon(getTextureVariant("center"));
+		halfLineIcon = reg.registerIcon(getTextureVariant("side"));
+		fullLineIcon = reg.registerIcon(getTextureVariant("long"));
 	}
 	
 	@Override
@@ -107,5 +104,10 @@ public class BlockRoadLine extends Block  implements IRegisterIcons, IBlockTextu
 		Icon icon = blockIcon;
 		//System.out.println("getBlockTexture: " + icon);
 		return icon != null ? icon.getTextureNum() : 0;
+	}
+
+	private static String getTextureVariant(final String variant) {
+		final String textureResolution = Chisel.roadLine16xTextures ? "-16x" : "";
+		return String.format("Chisel:line-marking/white-%s%s", variant, textureResolution);
 	}
 }

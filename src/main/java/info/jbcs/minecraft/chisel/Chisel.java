@@ -115,7 +115,8 @@ public class Chisel {
 	public static boolean 					disableOverriding;
 	public static boolean 					dropIceShards;
 	public static boolean					oldPillars;
-	public static boolean					disableCTM;	
+	public static boolean					disableCTM;
+	public static boolean roadLine16xTextures;
 	public static double 					concreteVelocity;
 	public static int						particlesTickrate;
 	public static boolean 					blockDescriptions;
@@ -204,6 +205,7 @@ public class Chisel {
 		particlesTickrate=config.get("general", "particle tickrate",1,"Particle tick rate. Greater value = less particles.").getInt(1);
 		oldPillars=config.get("general", "old pillar graphics",false,"Use old pillar textures").getBoolean(false);
 		disableCTM=config.get("general", "disable connected textures",false,"Disable connected textures").getBoolean(false);
+		roadLine16xTextures = config.get("general", "road line 16x textures", true, "Use 16x textures for road line blocks. If false, 32x textures will be used, but they will not render correctly, so it is not advised to set this to false.").getBoolean(true);
 		blockDescriptions=config.get("general", "use block descriptions in tooltips",true,"Make variations of blocks have the same name, and use the description in tooltip to distinguish them.").getBoolean(true);
 		
 		if(dropIceShards){

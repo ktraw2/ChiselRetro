@@ -16,8 +16,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockRoadLineRenderer implements ISimpleBlockRenderingHandler 
 {
 	static int id;
-	
-	RenderBlocksCompat renderCompat = null;
+
+	private final RenderBlocksCompat renderCompat;
 	
 	public BlockRoadLineRenderer() {
 		id = RenderingRegistry.getNextAvailableRenderId();
@@ -45,16 +45,6 @@ public class BlockRoadLineRenderer implements ISimpleBlockRenderingHandler
 		int meta=world.getBlockMetadata(x, y, z);
 		BlockRoadLine block=(BlockRoadLine) b;
 		Tessellator tessellator=Tessellator.instance;
-		
-		/*RenderBlocks renderer = renderCompat;
-		renderCompat.renderMinX = rendererOld.renderMinX;
-		renderCompat.renderMaxX = rendererOld.renderMaxX;
-		renderCompat.renderMinY = rendererOld.renderMinY;
-		renderCompat.renderMaxY = rendererOld.renderMaxY;
-		renderCompat.renderMinZ = rendererOld.renderMinZ;
-		renderCompat.renderMaxZ = rendererOld.renderMaxZ;
-		renderCompat.blockAccess = rendererOld.blockAccess;
-		renderCompat.rendererOld = rendererOld;*/
 		
 		tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
 

@@ -82,7 +82,6 @@ public class BlockAdvancedMarbleRenderer implements ISimpleBlockRenderingHandler
 	    		rendererCompat.renderMaxY=1.0;
 	    		rendererCompat.renderMaxZ=1.0;
 	    		rendererCompat.rendererOld=rendererOld;
-				rendererCompat.overrideBlockTexture = rendererOld.overrideBlockTexture;
 	    		return rendererCompat.renderStandardBlock(block,x,y,z);
     	}
 	}
