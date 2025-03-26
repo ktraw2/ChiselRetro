@@ -1070,7 +1070,7 @@ public class Chisel {
 	    blockDirt.carverHelper.register(blockDirt, "blockDirt");
 	    MinecraftForge.setBlockHarvestLevel(blockDirt,"shovel",0);
 		OreDictionary.registerOre("blockDirt", blockDirt);
-		Carving.chisel.registerOre("blockDirt","blockDirt");
+		Carving.chisel.registerOre("dirt", "blockDirt");
 	    
 	    blockTemple = (BlockMarble) new BlockEldritch("temple", 2840).setHardness(2.0F).setResistance(10F).setStepSound(soundTempleFootstep);;
 	    blockTemple.carverHelper.setBlockName("Temple Block");
