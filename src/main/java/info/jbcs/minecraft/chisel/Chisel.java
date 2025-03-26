@@ -44,7 +44,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 
 
-@Mod(modid = "Chisel", name = "Chisel", version = "1.5.0", dependencies = "required-after:Autoutils")
+@Mod(modid = "Chisel", name = "Chisel", version = "1.5.0")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class Chisel {
 	public static ItemChisel				chisel;
