@@ -205,7 +205,15 @@ public class BlockMarblePaneRenderer implements ISimpleBlockRenderingHandler
 
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block b, int modelId, RenderBlocks renderer) {
-		BlockPane block = (BlockPane) b;
+		if (!(b instanceof BlockPane)) {
+			return false;
+		}
+
+		final BlockPane block = (BlockPane) b;
+		if (renderer.overrideBlockTexture >= 0) {
+			return renderer.renderBlockPane(block, x, y, z);
+		}
+
 		Tessellator tessellator = Tessellator.instance;
 
 		int worldHeight = world.getHeight();

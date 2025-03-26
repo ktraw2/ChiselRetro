@@ -3,21 +3,19 @@ package info.jbcs.minecraft.chisel;
 import java.util.Random;
 
 import net.fybertech.chiselretro.Icon;
-import net.fybertech.chiselretro.RetroUtil;
-import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockMarbleBookshelf extends BlockMarble 
-{
-
-	public BlockMarbleBookshelf(int i) {
-		super(i);
+public class BlockMarbleBookshelf extends BlockMarble {
+	public BlockMarbleBookshelf(
+			int i,
+			final Material material
+	) {
+		super(i, material);
 	}
-
 
 	@Override
 	@SideOnly(Side.CLIENT)

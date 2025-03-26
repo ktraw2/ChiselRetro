@@ -6,41 +6,22 @@ buildscript {
 		maven { url 'https://repo.sleeping.town' }
 	}
 	dependencies {
-		classpath 'com.unascribed:voldeloom:1.0+1.4.7'
+		classpath "agency.highlysuspect:voldeloom:2.4"
 	}
 }
 
 apply plugin: 'java'
-apply plugin: 'com.unascribed.voldeloom'
+apply plugin: "agency.highlysuspect.voldeloom"
 
-sourceCompatibility = 6
-targetCompatibility = 6
+java.toolchain.languageVersion = JavaLanguageVersion.of(11)
+compileJava.options.release.set(6)
 
 def forgeVersion = '1.4.7-6.6.2.534'
-
-def mcp = "mcp726a.zip";
-def forgeZip = "forge${forgeVersion}.zip"
-def mcpForged = "mcp726a-forged.zip"
-
-if (!file(mcp).exists()) {
-	println "Downloading ${mcp} from archive.org..."
-	file(mcp).withOutputStream {
-		it << new URL("https://archive.org/download/minecraftcoderpack/minecraftcoderpack.zip/minecraftcoderpack%2F1.4.7%2F${mcp}").openStream()
-	}
-}
-if (!file(forgeZip).exists()) {
-	println "Downloading Forge ${forgeVersion} source..."
-	file(forgeZip).withOutputStream {
-		it << new URL("https://maven.minecraftforge.net/net/minecraftforge/forge/${forgeVersion}/forge-${forgeVersion}-src.zip").openStream()
-	}
-}
-if (!file(mcpForged).exists()) {
-	println "Merging Forge config into MCP..."
-	'./merge-forge.sh'.execute()
-}
+def minecraftVersion = "1.4.7"
+def lombokVersion = "1.18.36"
 
 archivesBaseName = "ChiselRetro"
-version = "beta0.9+upsilon1"
+version = "beta0.9+bugfixes"
 group = "net.fybertech"
 
 repositories {
@@ -52,18 +33,17 @@ repositories {
 }
 
 dependencies {
-	minecraft "com.mojang:minecraft:1.4.7"
+	minecraft "com.mojang:minecraft:${minecraftVersion}"
 	forge "net.minecraftforge:forge:${forgeVersion}:universal@zip"
+	mappings "net.minecraftforge:forge:${forgeVersion}:src@zip"
 	implementation "com.google.guava:guava:12.0.1"
-	mappings files(mcpForged)
+
+	compileOnly "org.projectlombok:lombok:${lombokVersion}"
+	annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 }
 
 jar {
 	destinationDir file("build/tmp")
-}
-
-remapJar {
-	archiveName "${archivesBaseName}_${version}_mc1.4.7.zip"
 }
 
 processResources {
@@ -77,4 +57,3 @@ processResources {
 tasks.withType(JavaCompile) {
 	options.encoding = "UTF-8"
 }
-

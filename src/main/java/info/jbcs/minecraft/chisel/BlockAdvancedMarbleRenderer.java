@@ -35,7 +35,11 @@ public class BlockAdvancedMarbleRenderer implements ISimpleBlockRenderingHandler
     
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks rendererOld) {
-        int meta = world.getBlockMetadata(x, y, z);
+		if (rendererOld.overrideBlockTexture >= 0) {
+			return rendererOld.renderStandardBlock(block, x, y, z);
+		}
+
+		int meta = world.getBlockMetadata(x, y, z);
         
     	CarvableVariation var=((Carvable) block).getVariation(meta);
     	
@@ -77,7 +81,8 @@ public class BlockAdvancedMarbleRenderer implements ISimpleBlockRenderingHandler
 	    		rendererCompat.renderMaxX=1.0;
 	    		rendererCompat.renderMaxY=1.0;
 	    		rendererCompat.renderMaxZ=1.0;
-	    		rendererCompat.rendererOld=rendererOld;    		
+	    		rendererCompat.rendererOld=rendererOld;
+				rendererCompat.overrideBlockTexture = rendererOld.overrideBlockTexture;
 	    		return rendererCompat.renderStandardBlock(block,x,y,z);
     	}
 	}

@@ -1,35 +1,15 @@
 package info.jbcs.minecraft.chisel;
 
+import info.jbcs.minecraft.chisel.item.BasicTexturedItem;
 import info.jbcs.minecraft.utilities.General;
 import info.jbcs.minecraft.utilities.packets.PacketHandler;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Field;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import javax.imageio.ImageIO;
-
-import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-
-import net.fybertech.chiselretro.IRegisterIcons;
-import net.fybertech.chiselretro.IconInstance;
-import net.fybertech.chiselretro.IconRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.StepSound;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GLAllocation;
-import net.minecraft.client.renderer.RenderEngine;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -40,7 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
-import cpw.mods.fml.client.TextureFXManager;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -70,7 +49,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class Chisel {
 	public static ItemChisel				chisel;
 //	public static ItemChisel				needle;
-	public static Item						itemIceshard;
+	public static BasicTexturedItem         itemIceshard;
 	public static ItemCloudInABottle		itemCloudInABottle;
 	public static ItemBallOMoss				itemBallOMoss;
 
@@ -228,10 +207,12 @@ public class Chisel {
 		blockDescriptions=config.get("general", "use block descriptions in tooltips",true,"Make variations of blocks have the same name, and use the description in tooltip to distinguish them.").getBoolean(true);
 		
 		if(dropIceShards){
-			itemIceshard=new Item(config.getItem("iceshard",7812).getInt()).setCreativeTab(CreativeTabs.tabMaterials).setItemName("iceshard");
-			// TODO - Fyber - .setTextureName("Chisel:iceshard")
-//			itemIceshard=new Item(2582).setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("Chisel:iceshard").func_111206_d("Chisel:iceshard");
-			LanguageRegistry.addName(itemIceshard, "Ice shard");
+			itemIceshard = new BasicTexturedItem(
+					config.getItem("iceshard",7812).getInt(),
+					"chisel:iceshard"
+			);
+			itemIceshard.setCreativeTab(CreativeTabs.tabMaterials).setItemName("iceshard");
+			LanguageRegistry.addName(itemIceshard, "Ice Shard");
 			
 			CraftingManager.getInstance().addRecipe(new ItemStack(Block.ice, 1), new Object[] { "**", "**", '*', itemIceshard, });
 		}
@@ -248,7 +229,7 @@ public class Chisel {
 				}
 			};
 			
-			LanguageRegistry.instance().addStringLocalization("itemGroup.tabChisel", "en_US", "Chisel blocks");
+			LanguageRegistry.instance().addStringLocalization("itemGroup.tabChisel", "en_US", "Chisel Blocks");
 		} else{
 			tabChisel = CreativeTabs.tabBlock;
 		}
@@ -826,7 +807,7 @@ public class Chisel {
 			String n=plank_names[i];
 			String u=plank_ucnames[i];
 			
-			blockPlanks[i] = (BlockMarble) (new BlockMarble("wood-"+n,2777+i)).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundWoodFootstep);
+			blockPlanks[i] = (BlockMarble) (new BlockMarble("wood-"+n,2777+i, Material.wood)).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundWoodFootstep);
 			blockPlanks[i].carverHelper.setBlockName(u+" Wood Planks");
 			blockPlanks[i].carverHelper.addVariation("Smooth "+n+" wood planks", 1, "planks-"+n+"/clean");
 			blockPlanks[i].carverHelper.addVariation("Short "+n+" wood planks", 2, "planks-"+n+"/short");
@@ -1034,7 +1015,7 @@ public class Chisel {
 			Carving.needle.addVariation(group, blockCarpet.blockID, i, 1);
 		}*/
 		
-		blockBookshelf=(BlockMarble) new BlockMarbleBookshelf(getBlock(Block.bookShelf,2837)).setHardness(1.5F).setStepSound(Block.soundWoodFootstep);
+		blockBookshelf=(BlockMarble) new BlockMarbleBookshelf(getBlock(Block.bookShelf,2837), Material.wood).setHardness(1.5F).setStepSound(Block.soundWoodFootstep);
 		blockBookshelf.carverHelper.addVariation("Bookshelf", 0, Block.bookShelf);
 		blockBookshelf.carverHelper.addVariation("Bookshelf with rainbow colored books", 1, "bookshelf/rainbow");
 		blockBookshelf.carverHelper.addVariation("Necromancer novice's bookshelf", 2, "bookshelf/necromancer-novice");
@@ -1071,7 +1052,7 @@ public class Chisel {
 		OreDictionary.registerOre("blockTyrian", blockTyrian);
 		Carving.chisel.registerOre("blockTyrian","blockTyrian");
 		
-	    blockDirt = (BlockMarble) new BlockMarble(getBlock(Block.dirt,2839), Material.ground).setHardness(0.5F).setStepSound(Block.soundGravelFootstep);	    
+	    blockDirt = (BlockMarble) new BlockMarble(getBlock(Block.dirt,2839), Material.ground).setHardness(0.5F).setStepSound(Block.soundGravelFootstep);
 	    blockDirt.carverHelper.addVariation("Dirt", 0, Block.dirt);
 	    blockDirt.carverHelper.addVariation("Dirt bricks in disarray", 1, "dirt/bricks");
 	    blockDirt.carverHelper.addVariation("Dirt bricks imitating nether brick design", 2, "dirt/netherbricks");
@@ -1132,6 +1113,7 @@ public class Chisel {
 	    blockTempleMossy.carverHelper.register(blockTempleMossy, "blockTempleMossy");
 	    
 		blockCloud=(BlockCloud) new BlockCloud("cloud", 2842).setHardness(0.2F).setLightOpacity(3).setStepSound(Block.soundClothFootstep);
+		blockCloud.carverHelper.setBlockName("Cloud Block");
 		blockCloud.carverHelper.addVariation("Cloud block", 0, "cloud/cloud");
 		blockCloud.carverHelper.register(blockCloud, "blockCloud");
 		OreDictionary.registerOre("blockCloud", blockCloud);
