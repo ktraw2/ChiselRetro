@@ -861,7 +861,7 @@ public class Chisel {
 		Carving.chisel.addVariation("obsidian", blockObsidianSnakestone.blockID, 13, 17);
 		
 		if(config.get("general", "Add panes", true, "Changes pane rendering algorithm a bit.").getBoolean(true)){
-			blockPaneIron = (BlockMarblePane) new BlockMarblePane(getBlock(Block.fenceIron,2802), Material.iron, true).setHardness(0.3F).setStepSound(Block.soundMetalFootstep);
+			blockPaneIron = (BlockMarblePane) new BlockMarblePane(getBlock(Block.fenceIron,2802), Material.iron, true).setHardness(5.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep);
 			blockPaneIron.carverHelper.addVariation("Iron bars", 0, Block.fenceIron);
 			blockPaneIron.carverHelper.addVariation("Iron bars without frame", 1, "ironpane/fenceIron");
 			blockPaneIron.carverHelper.addVariation("Menacing iron bars", 2, "ironpane/barbedwire");
