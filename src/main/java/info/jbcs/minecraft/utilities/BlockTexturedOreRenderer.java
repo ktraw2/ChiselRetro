@@ -28,6 +28,7 @@ public class BlockTexturedOreRenderer implements ISimpleBlockRenderingHandler
 			return;
 		
 		BlockTexturedOre block=(BlockTexturedOre) blck;
+		block.currentPass = 1;
 		
 		if(block.icon!=null){
 			renderer.overrideBlockTexture = block.icon.getTextureNum();
