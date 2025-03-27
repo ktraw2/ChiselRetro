@@ -2,6 +2,7 @@ package info.jbcs.minecraft.chisel;
 
 import info.jbcs.minecraft.chisel.item.BasicTexturedItem;
 import info.jbcs.minecraft.utilities.General;
+import info.jbcs.minecraft.utilities.LangUtils;
 import info.jbcs.minecraft.utilities.packets.PacketHandler;
 
 import java.io.File;
@@ -192,7 +193,7 @@ public class Chisel {
 		
 		itemCloudInABottle=(ItemCloudInABottle) new ItemCloudInABottle(config.getItem("cloudInABottle",7813).getInt()).setItemName("cloudinabottle").setCreativeTab(CreativeTabs.tabTools);
 		itemCloudInABottle.setTextureName("Chisel:cloudinabottle");
-		LanguageRegistry.addName(itemCloudInABottle, "Cloud in a bottle");
+		LanguageRegistry.addName(itemCloudInABottle,  LangUtils.applyCapitalization("Cloud in a bottle"));
 		EntityRegistry.registerModEntity(EntityCloudInABottle.class, "CloudInABottle", 1, this, 40, 1, true);
 		
 		itemBallOMoss=(ItemBallOMoss) new ItemBallOMoss(config.getItem("ballOMoss",7814).getInt()).setItemName("ballomoss").setCreativeTab(CreativeTabs.tabTools);
@@ -503,8 +504,8 @@ public class Chisel {
 
 		blockSandSnakestone=(BlockSnakestone) new BlockSnakestone(getBlock("sandSnakestone",2784),"Chisel:snakestone/sandsnake/").setBlockName("sandSnakestone");
 		GameRegistry.registerBlock(blockSandSnakestone, ItemCarvable.class, blockSandSnakestone.getBlockName());
-		LanguageRegistry.addName(new ItemStack(blockSandSnakestone.blockID, 1, 1), "Sandstone snake block head");
-		LanguageRegistry.addName(new ItemStack(blockSandSnakestone.blockID, 1, 13), "Sandstone snake block body");		
+		LanguageRegistry.addName(new ItemStack(blockSandSnakestone.blockID, 1, 1), LangUtils.applyCapitalization("Sandstone snake block head"));
+		LanguageRegistry.addName(new ItemStack(blockSandSnakestone.blockID, 1, 13),  LangUtils.applyCapitalization("Sandstone snake block body"));
 		Carving.chisel.addVariation("sandstone", blockSandSnakestone.blockID, 1, 16);
 		Carving.chisel.addVariation("sandstone", blockSandSnakestone.blockID, 13, 17);
 		
@@ -545,7 +546,7 @@ public class Chisel {
 		
 		blockRoadLine = (BlockRoadLine) new BlockRoadLine("roadLine",2782).setStepSound(Block.soundStoneFootstep).setHardness(0.01F).setBlockName("roadLine");
 		GameRegistry.registerBlock(blockRoadLine, ItemCarvable.class, "roadLine");
-		LanguageRegistry.addName(new ItemStack(blockRoadLine.blockID, 1, 0), "Road lines");
+		LanguageRegistry.addName(new ItemStack(blockRoadLine.blockID, 1, 0),  LangUtils.applyCapitalization("Road lines"));
 				
 		blockIron = (BlockMarble) new BlockMarble(getBlock(Block.blockSteel,2790)).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep);
 		blockIron.carverHelper.addVariation("Iron block", 0, Block.blockSteel);
@@ -733,8 +734,8 @@ public class Chisel {
 
 		blockSnakestone=(BlockSnakestone) new BlockSnakestone(getBlock("snakestone",2783),"Chisel:snakestone/snake/").setBlockName("snakestone");
 		GameRegistry.registerBlock(blockSnakestone, ItemCarvable.class, blockSnakestone.getBlockName());
-		LanguageRegistry.addName(new ItemStack(blockSnakestone.blockID, 1, 1), "Stone snake block head");
-		LanguageRegistry.addName(new ItemStack(blockSnakestone.blockID, 1, 13), "Stone snake block body");		
+		LanguageRegistry.addName(new ItemStack(blockSnakestone.blockID, 1, 1),  LangUtils.applyCapitalization("Stone snake block head"));
+		LanguageRegistry.addName(new ItemStack(blockSnakestone.blockID, 1, 13),  LangUtils.applyCapitalization("Stone snake block body"));
 		Carving.chisel.addVariation("stoneBrick", blockSnakestone.blockID, 1, 16);
 		Carving.chisel.addVariation("stoneBrick", blockSnakestone.blockID, 13, 17);
 		
@@ -857,8 +858,8 @@ public class Chisel {
 	    
 	    blockObsidianSnakestone=(BlockSnakestoneObsidian) new BlockSnakestoneObsidian(getBlock("snakestoneObsidian",2785),"Chisel:snakestone/obsidian/").setBlockName("obsidianSnakestone").setHardness(50.0F).setResistance(2000.0F);
 		GameRegistry.registerBlock(blockObsidianSnakestone, ItemCarvable.class, blockObsidianSnakestone.getBlockName());
-		LanguageRegistry.addName(new ItemStack(blockObsidianSnakestone.blockID, 1, 1), "Obsidian snakestone head");
-		LanguageRegistry.addName(new ItemStack(blockObsidianSnakestone.blockID, 1, 13), "Obsidian snakestone body");		
+		LanguageRegistry.addName(new ItemStack(blockObsidianSnakestone.blockID, 1, 1),  LangUtils.applyCapitalization("Obsidian snakestone head"));
+		LanguageRegistry.addName(new ItemStack(blockObsidianSnakestone.blockID, 1, 13),  LangUtils.applyCapitalization("Obsidian snakestone body"));
 		Carving.chisel.addVariation("obsidian", blockObsidianSnakestone.blockID, 1, 16);
 		Carving.chisel.addVariation("obsidian", blockObsidianSnakestone.blockID, 13, 17);
 		

@@ -6,6 +6,7 @@ import info.jbcs.minecraft.utilities.GeneralClient;
 import java.util.ArrayList;
 import java.util.List;
 
+import info.jbcs.minecraft.utilities.LangUtils;
 import net.fybertech.chiselretro.Icon;
 import net.fybertech.chiselretro.IconRegister;
 import net.fybertech.chiselretro.RetroUtil;
@@ -54,7 +55,9 @@ public class CarvableHelper {
 		addVariation(description, metadata, texture, null, 0);
 	}
 
-	public void addVariation(String description, int metadata, String texture, Block block, int blockMeta) {
+	public void addVariation(String inputDescription, int metadata, String texture, Block block, int blockMeta) {
+		final String description = LangUtils.applyCapitalization(inputDescription);
+
 		if (variations.size() > 15)
 			return;
 
