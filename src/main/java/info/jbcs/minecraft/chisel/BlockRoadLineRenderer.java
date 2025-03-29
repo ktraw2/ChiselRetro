@@ -76,18 +76,17 @@ public class BlockRoadLineRenderer implements ISimpleBlockRenderingHandler
 		
 		if(N && S){
 			renderer.uvRotateTop=0;
-			renderer.overrideBlockTexture=block.fullLineIcon.getTextureNum();
+			renderer.overrideBlockTexture=block.getConnectingTexture(BlockRoadLine.LineLength.FULL, meta).getTextureNum();
 			renderer.renderStandardBlock(block, x, y, z);
-			
 		} else{
 			if(N){
 				renderer.uvRotateTop=0;
-				renderer.overrideBlockTexture=block.halfLineIcon.getTextureNum();
+				renderer.overrideBlockTexture=block.getConnectingTexture(BlockRoadLine.LineLength.HALF, meta).getTextureNum();
 				renderer.renderStandardBlock(block, x, y, z);
 			}
 			if(S){
 				renderer.uvRotateTop=3;
-				renderer.overrideBlockTexture=block.halfLineIcon.getTextureNum();
+				renderer.overrideBlockTexture=block.getConnectingTexture(BlockRoadLine.LineLength.HALF, meta).getTextureNum();
 				renderer.renderStandardBlock(block, x, y, z);
 			}
 			
@@ -95,17 +94,17 @@ public class BlockRoadLineRenderer implements ISimpleBlockRenderingHandler
 
 		if(E && W){
 			renderer.uvRotateTop=1;
-			renderer.overrideBlockTexture=block.fullLineIcon.getTextureNum();
+			renderer.overrideBlockTexture=block.getConnectingTexture(BlockRoadLine.LineLength.FULL, meta).getTextureNum();
 			renderer.renderStandardBlock(block, x, y, z);
 		} else{
 			if(E){
 				renderer.uvRotateTop=1;
-				renderer.overrideBlockTexture=block.halfLineIcon.getTextureNum();
+				renderer.overrideBlockTexture=block.getConnectingTexture(BlockRoadLine.LineLength.HALF, meta).getTextureNum();
 				renderer.renderStandardBlock(block, x, y, z);
 			}
 			if(W){
 				renderer.uvRotateTop=2;
-				renderer.overrideBlockTexture=block.halfLineIcon.getTextureNum();
+				renderer.overrideBlockTexture=block.getConnectingTexture(BlockRoadLine.LineLength.HALF, meta).getTextureNum();
 				renderer.renderStandardBlock(block, x, y, z);
 			}
 		}

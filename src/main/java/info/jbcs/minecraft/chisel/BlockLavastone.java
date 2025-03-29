@@ -19,8 +19,17 @@ public class BlockLavastone extends BlockMarbleTexturedOre
 		if (random.nextInt(8) == 0)
 			GeneralChiselClient.spawnLavastoneFX(world,this,x,y,z);
 	}
-	
-	
+
+	@Override
+	public boolean isBlockNormalCube(
+			final World world,
+			final int x,
+			final int y,
+			final int z
+	) {
+		return true;
+	}
+
 	// Use a different texture in pass 0 so that we can use vanilla's lava texture
 	// on the inner part of the block.
 	@Override

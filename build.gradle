@@ -21,7 +21,7 @@ def minecraftVersion = "1.4.7"
 def lombokVersion = "1.18.36"
 
 archivesBaseName = "ChiselRetro"
-version = "beta0.9+bugfixes"
+version = "beta0.9.1+bugfixes"
 group = "net.fybertech"
 
 repositories {

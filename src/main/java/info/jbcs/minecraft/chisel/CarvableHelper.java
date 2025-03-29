@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import info.jbcs.minecraft.utilities.LangUtils;
+import lombok.Setter;
 import net.fybertech.chiselretro.Icon;
 import net.fybertech.chiselretro.IconRegister;
 import net.fybertech.chiselretro.RetroUtil;
@@ -35,13 +36,14 @@ public class CarvableHelper {
 	static final int				CTMX			= 8;
 	
 
-	public CarvableHelper() {
-	}
+	public CarvableHelper() {}
 
 	ArrayList<CarvableVariation>	variations		= new ArrayList<CarvableVariation>();
 	CarvableVariation[]				map				= new CarvableVariation[16];
 	public boolean					forbidChiseling	= false;
-	String							blockName;
+
+	@Setter
+    private String blockName;
 
 	public void addVariation(String description, int metadata, Block bb) {
 		addVariation(description, metadata, null, bb, 0);
@@ -389,9 +391,4 @@ public class CarvableHelper {
 	private boolean isSame(IBlockAccess world, int x, int y, int z,int id,int meta) {
 		return world.getBlockId(x, y, z) == id && world.getBlockMetadata(x, y, z) == meta;
 	}
-
-	public void setBlockName(String name) {
-		blockName=name;
-	}
-	
 }

@@ -545,8 +545,11 @@ public class Chisel {
 		Carving.chisel.registerOre("concrete","blockConcrete");
 		
 		blockRoadLine = (BlockRoadLine) new BlockRoadLine("roadLine",2782).setStepSound(Block.soundStoneFootstep).setHardness(0.01F).setBlockName("roadLine");
-		GameRegistry.registerBlock(blockRoadLine, ItemCarvable.class, "roadLine");
-		LanguageRegistry.addName(new ItemStack(blockRoadLine.blockID, 1, 0),  LangUtils.applyCapitalization("Road lines"));
+		blockRoadLine.carverHelper.setBlockName("Road Lines");
+		blockRoadLine.carverHelper.addVariation("White", 0, BlockRoadLine.getTextureVariant("white", "center"));
+		blockRoadLine.carverHelper.addVariation("Yellow", 1, BlockRoadLine.getTextureVariant("yellow", "center"));
+		blockRoadLine.carverHelper.register(blockRoadLine, "roadLine");
+		Carving.chisel.registerOre("roadLine", "roadLine");
 				
 		blockIron = (BlockMarble) new BlockMarble(getBlock(Block.blockSteel,2790)).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep);
 		blockIron.carverHelper.addVariation("Iron block", 0, Block.blockSteel);
@@ -1172,8 +1175,9 @@ public class Chisel {
 		CraftingManager.getInstance().addRecipe(new ItemStack(blockTyrian, 8, 0),    new Object[] { "***", "*X*", "***", '*', new ItemStack(Block.stone, 1), 'X', new ItemStack(Item.ingotIron, 1)});
 		CraftingManager.getInstance().addRecipe(new ItemStack(blockTemple, 8, 0),    new Object[] { "***", "*X*", "***", '*', new ItemStack(Block.stone, 1), 'X', new ItemStack(Item.dyePowder, 1, 4)});
 		CraftingManager.getInstance().addRecipe(new ItemStack(blockFactory,32,0),    new Object[] { "*X*", "X X", "*X*", '*', new ItemStack(Block.stone, 1), 'X', new ItemStack(Item.ingotIron, 1)});
-		
-		
+		CraftingManager.getInstance().addRecipe(new ItemStack(blockRoadLine, 8), "WRW", "WRW", "WRW", 'W', new ItemStack(Item.dyePowder, 1, 15), 'R', Item.redstone);
+
+
 		if(config.get("general", "Alternative recipe", false, "Use alternative crafting recipe for the chisel").getBoolean(false)){
 			CraftingManager.getInstance().addRecipe(new ItemStack(chisel, 1), new Object[] { " YY", " YY", "X  ", 'X', Item.stick, 'Y', Item.ingotIron });
 		} else{
